@@ -10,6 +10,8 @@ class GameLauncher:
         self.head = Head()
         self.setup_pen()
         self.setup_food()
+        self.keybindings()
+        
 
     def start(self):
         wn = self.wn
@@ -22,7 +24,8 @@ class GameLauncher:
         segments = []
         pen = self.pen
         while True:
-            wn.update()
+            print("Gameplay")
+            self.wn.update()
 
             # Check for a collision with the border
             if head.head.xcor()>290 or head.head.xcor()<-290 or head.head.ycor()>290 or head.head.ycor()<-290:
@@ -90,10 +93,10 @@ class GameLauncher:
 
             # Check for head collision with the body segments
             for segment in segments:
-                if segment.distance(head) < 20:
+                if segment.distance(head.head) < 20:
                     time.sleep(1)
                     head.head.goto(0,0)
-                    head.head.direction = "stop"
+                    head.direction = "stop"
                 
                     # Hide the segments
                     for segment in segments:
