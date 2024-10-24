@@ -1,0 +1,1 @@
+GAME_SPEED = 0.5 # MS
