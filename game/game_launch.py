@@ -49,8 +49,8 @@ class GameLauncher:
 
             self.pen.clear()
             self.pen.write("Score: {}  High Score: {}".format(self.score, self.high_score), align="center", font=("Courier", 24, "normal")) 
-            return True
-        return False
+            return 1
+        return 0
 
     def check_food_collision(self):
         if self.head.head.distance(self.food) < 20:
@@ -123,8 +123,8 @@ class GameLauncher:
 
         # Move segment 0 to where the head is
         if len(self.segments) > 0:
-            x = self.head.xcor()
-            y = self.head.ycor()
+            x = self.head.head.xcor()
+            y = self.head.head.ycor()
             self.segments[0].goto(x,y)
 
 
@@ -165,9 +165,7 @@ class GameLauncher:
         self.update_snake_body()
         head.move()
         new_state = self.state_to_array()
-        print("collection check is ",collision_check)
         reward = self.get_reward(old_score, self.score, collision_check)
-        print("Reward is ",reward)
         done = collision_check
 
         return new_state,reward,done
@@ -201,8 +199,8 @@ class GameLauncher:
                 pen.clear()
                 pen.write("Score: {}  High Score: {}".format(self.score, self.high_score), align="center", font=("Courier", 24, "normal"))
 
-                return True
-        return False
+                return 1
+        return 0
 
     def setup_window(self):
         self.wn = self.turtle.Screen()
@@ -251,8 +249,8 @@ class GameLauncher:
 
 
 game = GameLauncher()
-for i in range(10):
+for i in range(20):
     action = game.get_random_action()
     new_state,reward,done =game.step(action)
-    print(f"NEw state is {new_state} | Reward is {reward} | Done is {done}")
+    print(f"Run {i} |Reward is {reward} | Done is {done}")
     time.sleep(2)
