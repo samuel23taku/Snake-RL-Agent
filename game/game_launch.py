@@ -1,5 +1,5 @@
 import turtle
-from head import Head
+from head import *
 import time
 import random
 import game_constants as gs
@@ -252,5 +252,5 @@ game = GameLauncher()
 for i in range(20):
     action = game.get_random_action()
     new_state,reward,done =game.step(action)
-    print(f"Run {i} |Reward is {reward} | Done is {done}")
+    print(f"Run {new_state.shape} |Reward is {reward} | Done is {done}")
     time.sleep(2)
