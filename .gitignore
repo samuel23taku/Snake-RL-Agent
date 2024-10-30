@@ -9,5 +9,5 @@
 [Ss]cripts
 pyvenv.cfg
 .venv
-.pth
+weights
 pip-selfcheck.json
